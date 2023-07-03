@@ -1,19 +1,20 @@
 # user_records
 
-authentication and authorization
+* authentication and authorization
 
-docker-compose up -> to run project locally
+* docker-compose up -> to run project locally
 
-user can create account 
-user can add name, college to db 
-user can list all added name and college name
+* user can create account 
+* user can add name, college to db 
+* user can list all added name and college name
 
-end point can be tested by postman as well as integrated UI.
+* end point can be tested by postman as well as integrated UI.
 
-end points 
+* end points 
 
 "/" -> home
 # "/login" --> type - post
+*** request body***
 ```
 { "data": {
     "email":"Ashu@1234",
@@ -22,8 +23,8 @@ end points
 }
 ```
 
-#"/signup" --> type - post
-
+# "/signup" --> type - post
+*** request body***
 ```
 { "data": {
     "email":"Ashu@1234",
@@ -33,7 +34,7 @@ end points
 }
 ```
 # "/add_user"--> type - post
-
+*** request body***
 ```
 { "data": {
     "college":"Ashu@1234",
