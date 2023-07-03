@@ -12,7 +12,7 @@
 
 * end points 
 
-"/" -> home
+# "/" -> home
 # "/login" --> type - post
 *** request body***
 ```
