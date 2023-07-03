@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+
+
+  collegerecord:
+    container_name: collegerecord
+    build:
+      context: .
+      dockerfile: Dockerfile
+ 
+    environment:
+      - SECRET_KEY1="qwertyuiopasdfghjklzxcvbnmgenratedfjsdfjs"
+
+    volumes:
+      - .:/usr/src/app
+
+    ports:  
+      - "5000:5000"
