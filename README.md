@@ -13,7 +13,7 @@ end point can be tested by postman as well as integrated UI.
 end points 
 
 "/" -> home
-"/login" --> type - post
+# "/login" --> type - post
 '''
 { "data": {
     "email":"Ashu@1234",
@@ -21,7 +21,9 @@ end points
     }
 }
 '''
-"/signup" --> type - post
+
+#"/signup" --> type - post
+
 '''
 { "data": {
     "email":"Ashu@1234",
@@ -30,7 +32,8 @@ end points
     }
 }
 '''
-"/add_user"--> type - post
+# "/add_user"--> type - post
+
 '''
 { "data": {
     "college":"Ashu@1234",
