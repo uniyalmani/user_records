@@ -14,30 +14,30 @@ end points
 
 "/" -> home
 # "/login" --> type - post
-'''
+```
 { "data": {
     "email":"Ashu@1234",
     "password":"9410197255"
     }
 }
-'''
+```
 
 #"/signup" --> type - post
 
-'''
+```
 { "data": {
     "email":"Ashu@1234",
     "password":"9410197255",
     "username": "ashu"
     }
 }
-'''
+```
 # "/add_user"--> type - post
 
-'''
+```
 { "data": {
     "college":"Ashu@1234",
     "name":"9410197255"
     }
 }
-'''
+```
