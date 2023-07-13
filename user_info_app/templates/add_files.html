@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add New File</p>
+                                {% if error_message %}
+                                <div class="text-danger text-center h4" >{{ error_message }}</div>
+                                {% endif %}
+                                <div class="text-danger text-center h4" id = "error_message"></div>
+                                <div class="text-success text-center h4" id = "success_message"></div>
+
+                                <form class=" mx-1 mx-md-4" id = "myForm" action="/add_file" method="POST" enctype="multipart/form-data">
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-file fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example3c" class="form-control" name="title" accept=".pdf, image/*"
+                                                required />
+                                            <label class="form-label" for="form3Example3c">title</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-info-circle fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <!-- <input type="text" id="form3Example4c" class="form-control"
+                                                name="discription" rows="4"/> -->
+                                            <textarea id="form3Example4c" class="form-control large-input" name="description"  rows="3"></textarea>
+                                               
+                                            <label class="form-label" for="form3Example4c" required>discription</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                      <i class="fas fa-file fa-lg me-3 fa-fw"></i>
+                                      <div class="form-outline flex-fill mb-0">
+                                          <input type="file" id="form3Example4c" class="form-control"
+                                              name="file" accept=".pdf, .jpg, .jpeg" />
+                                          <label class="form-label" for="form3Example4c" required>Upload</label>
+                                      </div>
+                                  </div>
+                                    
+
+
+
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="btn btn-primary btn-lg" value="Submit">Upload</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock main %}

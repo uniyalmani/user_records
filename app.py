@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,send_from_directory
+from config import AppSettings
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from auth_app.auth_blueprint import auth_blueprint
@@ -8,10 +9,11 @@ from extensions import db
 
 
 app = Flask(__name__)
+settings = AppSettings()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = "test_db"
-
+app.config['SQLALCHEMY_DATABASE_URI'] = settings.db_url
+app.config['SECRET_KEY'] = settings.secret_key
+app.config['FILE_LOCATION'] = settings.file_location
 
 
 db.init_app(app)
@@ -34,6 +36,12 @@ with app.app_context():
 def load_user(user_id):
     return User.query.get(user_id)
 
+
+
+@app.route('/files/<path:filename>')
+def get_file(filename):
+    directory =  app.config['FILE_LOCATION'] # Update with your directory path
+    return send_from_directory(directory, filename)
 
 @app.route('/')
 def home():

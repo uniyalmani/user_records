@@ -6,21 +6,76 @@
 
 
     
-<h1 class="text-center mt-5">Added Users</h1>
-<ul>
-  {% for user in user_info %}
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"> <B>Name</B> : {{ user.name}}</h5>
-      <p class="card-text"> <B>College </B>: {{ user.college }}</p>
+<h1 class="text-center mt-5">Files</h1>
 
+
+
+<div class="d-flex justify-content-center">
+  <div class="input-group" style="width: 50%;">
+    <input type="text" class="form-control" placeholder="Search..." id="search-input">
+    <select class="form-select form-select-sm" id="search-option">
+      <option value="all" class="form-select-option-sm" selected >all</option>
+      <option value="title" class="form-select-option-sm" >Search by Title</option>
+      <option value="email" class="form-select-option-sm">Search by User</option>
+    </select>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" id="search-button">Search</button>
     </div>
+  </div>
+</div>
+
+
+
+
+<div class="d-flex justify-content-center align-items-center row" >
+ 
+  {% for user in user_info %}
+  
+  <div class="card mt-5" style="width: 50%; height: 70vh; align-self: center;">
+    <div class="card-body">
+      <h5 class="card-title"> <B>Title</B> : <span class="text-primary"> {{ user.title}} </span></h5>
+      <p class="card-text"> <B>Uploder</B>: <span class="text-secondary">{{ user.user_email }} </span></p>
+      <p class="card-text"> <B>Discription</B>: {{ user.description }}</p>
+      <p class="card-text"> <B>File Format</B>: {{ user.file_format }}</p>
+      <div class="card-img-container card-img-top" style="max-height: 70%; overflow-y: auto;">
+        <div class="embed-responsive embed-responsive-16by9">
+          {% if user.file_format in ['jpg', 'jpeg', 'png', 'gif'] %}
+            <img src="{{ url_for('get_file', filename=user.name) }}" class="embed-responsive-item" alt="Card image">
+          {% else %}
+            <iframe class="embed-responsive-item" src="{{ url_for('get_file', filename=user.name) }}"></iframe>
+          {% endif %}
+        </div>
+      </div>
+      
+</div>
+    
   </div>
   <br>
   {% endfor %}
-</ul>
+</div>
 
 
+<script>
+
+document.getElementById('search-button').addEventListener('click', function() {
+  var filter = document.getElementById('search-option').value;
+  var query = document.getElementById('search-input').value;
+
+  // Check the selected option and construct the URL with the appropriate query parameter
+  var url;
+  if (filter === 'all') {
+    url = '/list_all_files' + '?filter=' + filter;
+  } else if (filter === 'title') {
+    url = '/list_all_files' + '?filter=' + filter + '&title=' + query;
+  } else if (filter === 'email') {
+    url = '/list_all_files' + '?filter=' + filter + '&email=' + query;
+  }
+
+  console.log(url);
+  // Redirect to the constructed URL
+  window.location.href = url;
+});
+</script>
 
 
 
